@@ -23,6 +23,17 @@ function logout (){
     return auth.signOut ()
 }
 
+function resetPassword(email){
+    return auth.sendPasswordResetEmail(email)
+}
+
+function updateEmail (email) {
+    return auth.currentUser.updateEmail(email)
+}
+
+function updatePassword (password) {
+    return auth.currentUser.updatePassword(password)
+}
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
         setCurrentUser(user);
@@ -36,7 +47,10 @@ function logout (){
     currentUser,
     login,
     signup,
-    logout
+    logout,
+    resetPassword,
+    updateEmail,
+    updatePassword
   };
 
   return (

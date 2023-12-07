@@ -8,6 +8,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './Dashboard.js';
 import Login from './Login.js';
 import PrivateRoute from './PrivateRoute';
+import ForgotPassword from './ForgotPassword.js';
+import UpdateProfile from './UpdateProfile.js';
+
 
 function App() {
   return (
@@ -19,17 +22,15 @@ function App() {
         <Router>
           <AuthProvider>
             <Routes>
-
-            <Route path="/" element={
-                  <PrivateRoute>
-                    <Dashboard />
-                  </PrivateRoute>
-                }
-              ></Route>
-              <Route path="/signup" element={<Signup />} />
+            
+            <Route path="/" element={ <PrivateRoute> <Dashboard /></PrivateRoute>} />
+            
+            <Route path="/update-profile" element={ <PrivateRoute> <UpdateProfile /></PrivateRoute>} />
+            
+             <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
-
-            </Routes>
+              <Route path ="/forgot-password" element={<ForgotPassword />} />
+              </Routes>
           </AuthProvider>
         </Router>
       </div>
@@ -38,5 +39,4 @@ function App() {
 }
 
 export default App;
-
 
