@@ -4,32 +4,31 @@ import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
-    const emailRef = useRef ()
-    const passwordRef = useRef ()
-    const passwordConfirmRef = useRef ()
-    const { signup } = useAuth()
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
-    const navigate = useNavigate ()
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-    async function handleSubmit (e) {
-        e.preventDefault()
-        
-        if (passwordRef.current.value !== 
-        passwordConfirmRef.current.value){
-            return setError ('Passwords must match')
-        }
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-        try {
-            setError("")
-            setLoading(true)
-           await signup(emailRef.current.value, passwordRef.current.value)
-           navigate("/")
-        } catch {
-            setError('Failed to create account')
-        }
-            setLoading(false)
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords must match");
     }
+
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
+    } catch {
+      setError("Failed to create account");
+    }
+    setLoading(false);
+  }
 
   return (
     <>

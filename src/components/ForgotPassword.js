@@ -3,30 +3,27 @@ import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
-
 export default function ForgotPassword() {
-    const emailRef = useRef ()
-    const { resetPassword } = useAuth()
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [message, setMessage] =useState ("")
+  const emailRef = useRef();
+  const { resetPassword } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-    async function handleSubmit (e) {
-        e.preventDefault()
-    
-
-        try {
-            setMessage('')
-            setError("")
-            setLoading(true)
-           await resetPassword (emailRef.current.value)
-           setMessage('Check Email Inbox for Reset Instructions.')
-        } catch {
-            setError('Failed to Reset Password')
-        }
-            setLoading(false)
+    try {
+      setMessage("");
+      setError("");
+      setLoading(true);
+      await resetPassword(emailRef.current.value);
+      setMessage("Check Email Inbox for Reset Instructions.");
+    } catch {
+      setError("Failed to Reset Password");
     }
+    setLoading(false);
+  }
 
   return (
     <>
@@ -40,18 +37,17 @@ export default function ForgotPassword() {
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-             <Button disabled={loading} className="w-100" type="Submit">
+            <Button disabled={loading} className="w-100" type="Submit">
               Reset Password
             </Button>
           </Form>
-            <div className="w-100 text-center mt-3">
-                <Link to="/login">Log In</Link>
-            </div>
-
+          <div className="w-100 text-center mt-3">
+            <Link to="/login">Log In</Link>
+          </div>
         </Card.Body>
       </Card>
       <div className="w -100 text-center mt-3">
-        Need an account? <Link to='/signup'>Sign Up Today!</Link>
+        Need an account? <Link to="/signup">Sign Up Today!</Link>
       </div>
     </>
   );
