@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-
+import CenterContainer from "./CenterContainer";
 export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -31,7 +31,7 @@ export default function Signup() {
   }
 
   return (
-    <>
+    <CenterContainer>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
@@ -58,6 +58,6 @@ export default function Signup() {
       <div className="w -100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
       </div>
-    </>
+    </CenterContainer>
   );
 }
