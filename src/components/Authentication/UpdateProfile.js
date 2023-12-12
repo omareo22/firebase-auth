@@ -3,6 +3,7 @@ import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import CenterContainer from "./CenterContainer";
+import NavBarComponent from "../drive/NavBar";
 
 export default function UpdateProfile() {
   const emailRef = useRef();

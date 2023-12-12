@@ -16,7 +16,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <Container fluid>
         <div className="d-flex align-items-center">
           <FolderBreadcrumbs currentFolder={folder} />
